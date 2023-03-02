@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Auth0Provider } from '@auth0/auth0-react';
+import { Box } from '@mui/material';
+/* *** */
+import AppMenu from './components/AppMenu';
+import Portal from './components/Portal/Portal';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Auth0Provider
+      domain="dev-cd620u5oo8g3se5k.us.auth0.com"
+      clientId="cJ1nbj0gLdEqlN4CLTCCgFK9aUXuISKY"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <AppMenu />
+      <Box sx={{ padding: '50px 0' }}>
+        <Portal />
+      </Box>
+    </Auth0Provider>
   );
 }
 
